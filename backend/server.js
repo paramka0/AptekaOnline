@@ -25,6 +25,7 @@ const PORT = process.env.PORT || 5000;
 // Настройки CORS
 const allowedOrigins = [
   'http://localhost:3000',
+  'https://aptekaonline-frontend.onrender.com',
   process.env.FRONTEND_URL
 ];
 const corsOptions = {
@@ -37,7 +38,8 @@ const corsOptions = {
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range']
 };
 
 // Middleware
