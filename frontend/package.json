@@ -8,7 +8,7 @@
   "scripts": {
     "start": "react-scripts start",
     "dev": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
-    "build": "react-scripts build",
+    "build": "set PUBLIC_URL=https://aptekaonline-frontend.onrender.com && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
