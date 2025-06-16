@@ -13,10 +13,12 @@ const RegisterForm = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/register', { phone, password });
+      const response = await axios.post(`${apiUrl}/register`, { phone, password });
       setMessage(response.data.message);
       if (response.data.token && response.data.user) {
         login(response.data.user, response.data.token);

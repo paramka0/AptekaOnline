@@ -5,6 +5,8 @@ import { useStats } from '../../context/StatsContext';
 import { getAdminProducts, createProduct, updateProduct, deleteProduct } from '../../api/apiService';
 import { FaEdit, FaTrash, FaPlus, FaChevronDown, FaChevronUp, FaTimes } from 'react-icons/fa';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 const ProductManagement = () => {
   const { isAuthenticated, isAdmin } = useAuth();
   const { updateProductsCount } = useStats();
@@ -377,7 +379,7 @@ const ProductManagement = () => {
                   {formData.images.map((img, idx) => (
                     <div key={idx} className="relative group">
                       <img
-                        src={img}
+                        src={img.startsWith('http') ? img : `${API_URL}${img}`}
                         alt={`img${idx}`}
                         className="h-20 w-20 object-cover rounded border border-gray-300"
                       />
@@ -521,8 +523,8 @@ const ProductManagement = () => {
                     {(product.images && product.images.length > 0 ? product.images : [product.image_url]).length > 0 && (
                       <img
                         src={(product.images && product.images.length > 0)
-                          ? (product.images[0].startsWith('http') ? product.images[0] : `http://localhost:5000${product.images[0]}`)
-                          : (product.image_url && product.image_url.startsWith('http') ? product.image_url : `http://localhost:5000${product.image_url}`)}
+                          ? (product.images[0].startsWith('http') ? product.images[0] : `${API_URL}${product.images[0]}`)
+                          : (product.image_url && product.image_url.startsWith('http') ? product.image_url : `${API_URL}${product.image_url}`)}
                         alt={product.title}
                         className="h-10 w-10 rounded-full mr-3 object-cover"
                         onError={(e) => {
