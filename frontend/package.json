@@ -2,7 +2,7 @@
   "name": "aptekaonline-frontend",
   "version": "1.0.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://aptekaonline-frontend.onrender.com",
   "description": "",
   "main": "index.js",
   "scripts": {
